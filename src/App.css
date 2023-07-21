@@ -2,12 +2,31 @@
   font-family: "Noto Sans", sans-serif;
 }
 .table-container {
-  margin: 4rem auto;
+  margin: 3rem auto;
   width: 87.7rem;
+  position: relative;
+}
+
+.table-state {
+  width: 10rem;
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: #212529;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -15,6 +34,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #1c7ed6;
+  background-color: #74c1fc59;
   border-radius: 3px;
 }

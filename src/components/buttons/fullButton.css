@@ -1,0 +1,13 @@
+.table-state:hover {
+  background-color: #212529c2;
+}
+
+.button-arrow {
+  margin-left: 10px;
+  transition: 0.5s;
+}
+.op-button-arrow {
+  margin-left: 10px;
+  transform: rotate(180deg);
+  transition: 0.5s;
+}
