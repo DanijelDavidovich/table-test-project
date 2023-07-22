@@ -1,3 +1,19 @@
+.table-state {
+  width: 10rem;
+  margin-top: 10px;
+  padding: 5px 20px;
+  background-color: #212529;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.5s;
+}
 .table-state:hover {
   background-color: #212529c2;
 }

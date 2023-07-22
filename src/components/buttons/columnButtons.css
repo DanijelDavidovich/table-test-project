@@ -1,0 +1,60 @@
+.column-buttons-container {
+  display: flex;
+  background-color: #212529a6;
+  width: 87.7rem;
+  height: 1.5rem;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+
+.column-button {
+  background-color: #212529;
+  color: #495057;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7rem;
+  height: 1.5rem;
+  /* transition: 0.5s; */
+  cursor: pointer;
+}
+
+.column-button:hover {
+  color: white;
+}
+
+.button-time {
+  position: absolute;
+  top: 0;
+  right: 5rem;
+}
+
+.button-price {
+  position: absolute;
+  top: 0;
+  right: 30rem;
+}
+
+.button-qty {
+  position: absolute;
+  top: 0;
+  right: 17.6rem;
+}
+
+.button-id {
+  position: absolute;
+  top: 0;
+  left: 13.2rem;
+}
+
+.column-button-arrow {
+  margin-left: 5px;
+}
+
+.column-button:hover .column-button-arrow {
+  margin-left: 15px;
+  transition: 0.3s;
+}

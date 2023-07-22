@@ -5,6 +5,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import Preloader from "./components/preloader/Preloader";
 import FullButton from "./components/buttons/FullButton";
+import ColumnButtons from "./components/buttons/ColumnButtons";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -62,8 +63,8 @@ function App() {
   return (
     <div className="table-container">
       <Preloader loading={loading} />
-
-      <div className="ag-theme-alpine-dark" style={{ height: "80vh" }}>
+      <ColumnButtons tableState={tableState} />
+      <div className="ag-theme-alpine-dark" style={{ height: "76vh" }}>
         <AgGridReact
           rowData={rowData}
           columnDefs={columnDefs}
