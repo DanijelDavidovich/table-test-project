@@ -1,6 +1,7 @@
 import "./dropDown.css";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { useState } from "react";
+import { dateFormatter, optionHelper } from "../../utils/utils";
 
 const QtyDropDown = (props) => {
   const [active, setActive] = useState(false);
@@ -8,21 +9,6 @@ const QtyDropDown = (props) => {
     setActive(!active);
   };
 
-  const optionHelper = (name) => {
-    switch (name) {
-      case "Ask Quantity":
-        return "askQty";
-        break;
-      case "Bid Quantity":
-        return "bidQty";
-        break;
-      case "Last Quantity":
-        return "lastQty";
-        break;
-      default:
-        return;
-    }
-  };
   const optionHandler = (e) => {
     const name = String(e.target.innerText);
     console.log(name);
@@ -47,17 +33,7 @@ const QtyDropDown = (props) => {
       },
       {
         field: "openTime",
-        valueFormatter: (params) => {
-          const time = Number(params.data.openTime);
-          const t = new Date(time);
-          const day = t.getDay();
-          const month = t.getMonth();
-          const year = t.getFullYear();
-          console.log(`${day}/${month}/${year}`);
-          return `${day > 9 ? day : `0${day}`}/${
-            month > 9 ? month : `0${month}`
-          }/${year}`;
-        },
+        valueFormatter: (params) => dateFormatter(params),
       },
     ]);
     console.log("qty active");

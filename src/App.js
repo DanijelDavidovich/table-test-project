@@ -4,14 +4,16 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine-dark.css";
 import Preloader from "./components/preloader/Preloader";
-import FullButton from "./components/buttons/FullButton";
 import ColumnButtons from "./components/buttons/ColumnButtons";
 import SelectionButton from "./components/buttons/SelectionButton";
+import FullButton from "./components/buttons/FullButton";
+import { FullTable } from "./components/utils/constants";
+import { dateFormatter } from "./components/utils/utils";
 
-function App() {
+const App = () => {
   const [loading, setLoading] = useState(true);
   const [rowData, setRowData] = useState();
-  const [tableState, setTableState] = useState("Full Table");
+  const [tableState, setTableState] = useState(FullTable);
 
   const [columnDefs, setColumnDefs] = useState([
     { field: "symbol" },
@@ -31,17 +33,7 @@ function App() {
     },
     {
       field: "openTime",
-      valueFormatter: (params) => {
-        const time = Number(params.data.openTime);
-        const t = new Date(time);
-        const day = t.getDay();
-        const month = t.getMonth();
-        const year = t.getFullYear();
-        console.log(`${day}/${month}/${year}`);
-        return `${day > 9 ? day : `0${day}`}/${
-          month > 9 ? month : `0${month}`
-        }/${year}`;
-      },
+      valueFormatter: (params) => dateFormatter(params),
     },
   ]);
   useEffect(() => {
@@ -84,6 +76,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;

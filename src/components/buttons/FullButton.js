@@ -1,9 +1,11 @@
 import { BiSolidRightArrow } from "react-icons/bi";
 import "./fullButton.css";
+import { FullTable } from "../utils/constants";
+import { dateFormatter } from "../utils/utils";
 
 const FullButton = (props) => {
   const fullButton = () => {
-    if (props.tableState === "Full Table") {
+    if (props.tableState === FullTable) {
       props.tableStateHandler("Short Table");
       props.columnDefsHandler([
         { field: "symbol" },
@@ -30,34 +32,27 @@ const FullButton = (props) => {
         {
           field: "closeTime",
           valueFormatter: (params) => {
-            const time = Number(params.data.openTime);
-            const t = new Date(time);
-            const day = t.getDay();
-            const month = t.getMonth();
-            const year = t.getFullYear();
-            console.log(`${day}/${month}/${year}`);
-            return `${day > 9 ? day : `0${day}`}/${
-              month > 9 ? month : `0${month}`
-            }/${year}`;
+            dateFormatter(params);
+            // const time = Number(params.data.openTime);
+            // const t = new Date(time);
+            // const day = t.getDay();
+            // const month = t.getMonth();
+            // const year = t.getFullYear();
+            // console.log(`${day}/${month}/${year}`);
+            // return `${day > 9 ? day : `0${day}`}/${
+            //   month > 9 ? month : `0${month}`
+            // }/${year}`;
           },
         },
         {
           field: "openTime",
           valueFormatter: (params) => {
-            const time = Number(params.data.openTime);
-            const t = new Date(time);
-            const day = t.getDay();
-            const month = t.getMonth();
-            const year = t.getFullYear();
-            console.log(`${day}/${month}/${year}`);
-            return `${day > 9 ? day : `0${day}`}/${
-              month > 9 ? month : `0${month}`
-            }/${year}`;
+            dateFormatter(params);
           },
         },
       ]);
     } else {
-      props.tableStateHandler("Full Table");
+      props.tableStateHandler(FullTable);
       props.columnDefsHandler([
         { field: "symbol" },
         { field: "firstId" },
@@ -76,27 +71,18 @@ const FullButton = (props) => {
         },
         {
           field: "openTime",
-          valueFormatter: (params) => {
-            const time = Number(params.data.openTime);
-            const t = new Date(time);
-            const day = t.getDay();
-            const month = t.getMonth();
-            const year = t.getFullYear();
-            console.log(`${day}/${month}/${year}`);
-            return `${day > 9 ? day : `0${day}`}/${
-              month > 9 ? month : `0${month}`
-            }/${year}`;
-          },
+          valueFormatter: (params) => dateFormatter(params),
         },
       ]);
     }
   };
+
   return (
     <button className="table-state" onClick={fullButton}>
       {props.tableState}
       <BiSolidRightArrow
         className={
-          props.tableState === "Full Table" ? "button-arrow" : "op-button-arrow"
+          props.tableState === FullTable ? "button-arrow" : "op-button-arrow"
         }
       />
     </button>

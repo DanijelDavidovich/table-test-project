@@ -8,8 +8,8 @@ const ColumnButtons = (props) => {
     <div
       className="column-buttons-container"
       style={{
-        visibility: "hidden",
-        // visibility: `${props.tableState === "Full Table" ? "" : "hidden"}`,
+        // visibility: "hidden",
+        visibility: `${props.tableState === "Full Table" ? "" : "hidden"}`,
       }}
     >
       <div className="column-button button-id">

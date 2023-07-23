@@ -1,6 +1,8 @@
 import "./dropDown.css";
 import { BiSolidDownArrow } from "react-icons/bi";
 import { useState } from "react";
+import { dateFormatter } from "../../utils/utils";
+import { optionHelper } from "../../utils/utils";
 
 const PriceDropDown = (props) => {
   const [active, setActive] = useState(false);
@@ -8,43 +10,43 @@ const PriceDropDown = (props) => {
     setActive(!active);
   };
 
-  const optionHelper = (name) => {
-    switch (name) {
-      case "Ask Price":
-        return "askPrice";
-        break;
+  // const optionHelper = (name) => {
+  //   switch (name) {
+  //     case "Ask Price":
+  //       return "askPrice";
+  //       break;
 
-      case "Bid Price":
-        return "bidPrice";
-        break;
-      case "High Price":
-        return "highPrice";
-        break;
-      case "Last Price":
-        return "lastPrice";
-        break;
-      case "Low Price":
-        return "lowPrice";
-        break;
-      case "Open Price":
-        return "openPrice";
-        break;
-      case "Prev Close Price":
-        return "prevClosePrice";
-        break;
-      case "Price Change":
-        return "priceChange";
-        break;
-      case "Weighted Avg Price":
-        return "weightedAbgPrice";
-        break;
-      case "Price Change Percent":
-        return "priceChangePercent";
-        break;
-      default:
-        return;
-    }
-  };
+  //     case "Bid Price":
+  //       return "bidPrice";
+  //       break;
+  //     case "High Price":
+  //       return "highPrice";
+  //       break;
+  //     case "Last Price":
+  //       return "lastPrice";
+  //       break;
+  //     case "Low Price":
+  //       return "lowPrice";
+  //       break;
+  //     case "Open Price":
+  //       return "openPrice";
+  //       break;
+  //     case "Prev Close Price":
+  //       return "prevClosePrice";
+  //       break;
+  //     case "Price Change":
+  //       return "priceChange";
+  //       break;
+  //     case "Weighted Avg Price":
+  //       return "weightedAbgPrice";
+  //       break;
+  //     case "Price Change Percent":
+  //       return "priceChangePercent";
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
   const optionHandler = (e) => {
     const name = String(e.target.innerText);
     console.log(name);
@@ -71,15 +73,7 @@ const PriceDropDown = (props) => {
       {
         field: "openTime",
         valueFormatter: (params) => {
-          const time = Number(params.data.openTime);
-          const t = new Date(time);
-          const day = t.getDay();
-          const month = t.getMonth();
-          const year = t.getFullYear();
-          console.log(`${day}/${month}/${year}`);
-          return `${day > 9 ? day : `0${day}`}/${
-            month > 9 ? month : `0${month}`
-          }/${year}`;
+          dateFormatter(params);
         },
       },
     ]);
