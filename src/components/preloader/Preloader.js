@@ -5,7 +5,7 @@ const Preloader = (props) => {
   return (
     <div className="loading-spinner">
       <PuffLoader
-        color={"#74c0fc"}
+        color={"#40c057"}
         loading={props.loading}
         cssOverride={{ margin: "0 auto" }}
         size={50}

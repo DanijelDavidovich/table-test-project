@@ -1,0 +1,40 @@
+.selection-container {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.selection-button {
+  border: none;
+  background-color: #40c057;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  padding: 0 2rem;
+  border-radius: 7px;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.selection-button:hover {
+  background-color: #69db7c;
+}
+
+.selection-arrow {
+  margin-left: 10px;
+}
+
+.selection-options {
+  position: absolute;
+  border-radius: 0 10px 10px 0;
+  top: 3rem;
+  left: 0;
+  z-index: 1000;
+  height: 35rem;
+  width: 25rem;
+  background-color: rgba(255, 255, 255, 0.897);
+}

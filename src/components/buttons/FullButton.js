@@ -13,7 +13,7 @@ const FullButton = (props) => {
         {
           field: "volume",
         },
-        { field: "count" },
+        { field: "count", sortable: "true", unSortIcon: "true" },
         { field: "askPrice" },
         { field: "bidPrice" },
         { field: "highPrice" },
@@ -61,10 +61,19 @@ const FullButton = (props) => {
       props.columnDefsHandler([
         { field: "symbol" },
         { field: "firstId" },
-        { field: "volume" },
-        { field: "count" },
-        { field: "askPrice" },
-        { field: "askQty" },
+        {
+          field: "volume",
+          valueFormatter: (params) => Number(params.data.volume).toFixed(2),
+        },
+        { field: "count", sortable: "true", unSortIcon: "true" },
+        {
+          field: "askPrice",
+          valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
+        },
+        {
+          field: "askQty",
+          valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
+        },
         {
           field: "openTime",
           valueFormatter: (params) => {

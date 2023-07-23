@@ -2,7 +2,7 @@
   font-family: "Noto Sans", sans-serif;
 }
 .table-container {
-  margin: 3rem auto;
+  margin: 1.8rem auto;
   width: 87.7rem;
   position: relative;
 }
@@ -21,6 +21,6 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #74c1fc59;
+  background-color: #40c057;
   border-radius: 3px;
 }
