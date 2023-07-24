@@ -1,2 +1,104 @@
+import { dateFormatter } from "./utils";
+
 export const FullTable = "Full Table";
 export const HiddenTableButtons = "hidden";
+export const InitialTable = [
+  { field: "symbol" },
+  { field: "firstId" },
+  {
+    id: "volume",
+    field: "volume",
+    valueFormatter: (params) => Number(params.data.volume).toFixed(2),
+  },
+  { field: "count", sortable: "true", unSortIcon: "true" },
+  {
+    id: "price",
+    field: "askPrice",
+    valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
+  },
+  {
+    id: "qty",
+    field: "askQty",
+    valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
+  },
+  {
+    id: "tyme",
+    field: "openTime",
+    valueFormatter: (params) => dateFormatter(params),
+  },
+];
+export const TableFull = [
+  { field: "symbol" },
+  { field: "firstId" },
+  { field: "lastId" },
+  {
+    field: "quoteVolume",
+    valueFormatter: (params) => Number(params.data.quoteVolume).toFixed(2),
+  },
+  {
+    field: "volume",
+    valueFormatter: (params) => Number(params.data.volume).toFixed(2),
+  },
+  { field: "count", sortable: "true", unSortIcon: "true" },
+  {
+    field: "askPrice",
+    valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
+  },
+  {
+    field: "bidPrice",
+    valueFormatter: (params) => Number(params.data.bidPrice).toFixed(2),
+  },
+  {
+    field: "highPrice",
+    valueFormatter: (params) => Number(params.data.highPrice).toFixed(2),
+  },
+  {
+    field: "lastPrice",
+    valueFormatter: (params) => Number(params.data.lastPrice).toFixed(2),
+  },
+  {
+    field: "lowPrice",
+    valueFormatter: (params) => Number(params.data.lowPrice).toFixed(2),
+  },
+  {
+    field: "openPrice",
+    valueFormatter: (params) => Number(params.data.openPrice).toFixed(2),
+  },
+  {
+    field: "prevClosePrice",
+    valueFormatter: (params) => Number(params.data.prevClosePrice).toFixed(2),
+  },
+  {
+    field: "priceChange",
+    valueFormatter: (params) => Number(params.data.priceChange).toFixed(2),
+  },
+  {
+    field: "weightedAvgPrice",
+    valueFormatter: (params) => Number(params.data.weightedAvgPrice).toFixed(2),
+  },
+  {
+    field: "priceChangePercent",
+    valueFormatter: (params) =>
+      Number(params.data.priceChangePercent).toFixed(2),
+  },
+  {
+    field: "askQty",
+    valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
+  },
+  {
+    field: "bidQty",
+    valueFormatter: (params) => Number(params.data.bidQty).toFixed(2),
+  },
+  {
+    field: "lastQty",
+    valueFormatter: (params) => Number(params.data.lastQty).toFixed(2),
+  },
+  {
+    field: "closeTime",
+    valueFormatter: (params) => dateFormatter(params),
+  },
+  {
+    field: "openTime",
+    valueFormatter: (params) => dateFormatter(params),
+  },
+];

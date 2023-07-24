@@ -9,11 +9,17 @@ import SelectionButton from "./components/buttons/SelectionButton";
 import FullButton from "./components/buttons/FullButton";
 import { FullTable } from "./components/utils/constants";
 import { dateFormatter } from "./components/utils/utils";
+import axios from "axios";
+import store from "./components/buttons/store/table-store";
+import { Provider } from "react-redux";
+import { useDispatch } from "react-redux";
+import { colSelActions } from "./components/buttons/store/table-slice";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [rowData, setRowData] = useState();
   const [tableState, setTableState] = useState(FullTable);
+  const dispatch = useDispatch();
 
   const [columnDefs, setColumnDefs] = useState([
     { field: "symbol" },
@@ -36,16 +42,18 @@ const App = () => {
       valueFormatter: (params) => dateFormatter(params),
     },
   ]);
+
   useEffect(() => {
-    fetch("https://data.binance.com/api/v3/ticker/24hr")
-      .then((data) => data.json())
+    axios
+      .get("https://data.binance.com/api/v3/ticker/24hr")
       .then((rowData) => {
-        setRowData(rowData);
+        setRowData(rowData.data);
         setLoading(false);
       })
       .catch((err) => {
         console.log("Somethng went wrong...");
       });
+    dispatch(colSelActions.setInitialState(columnDefs));
   }, []);
   const tableStateHandler = (str) => {
     setTableState(str);
@@ -55,26 +63,31 @@ const App = () => {
   };
 
   return (
-    <div className="table-container">
-      <SelectionButton />
-      <Preloader loading={loading} />
-      <ColumnButtons tableState={tableState} seterHandler={columnDefsHandler} />
-      <div className="ag-theme-alpine-dark" style={{ height: "76vh" }}>
-        <AgGridReact
-          rowData={rowData}
-          columnDefs={columnDefs}
-          paginationAutoPageSize={true}
-          pagination={true}
-          overlayLoadingTemplate={`<div></div>`}
-          animateRows={true}
+    <Provider store={store}>
+      <div className="table-container">
+        <SelectionButton />
+        <Preloader loading={loading} />
+        <ColumnButtons
+          tableState={tableState}
+          seterHandler={columnDefsHandler}
+        />
+        <div className="ag-theme-alpine-dark" style={{ height: "76vh" }}>
+          <AgGridReact
+            rowData={rowData}
+            columnDefs={columnDefs}
+            paginationAutoPageSize={true}
+            pagination={true}
+            overlayLoadingTemplate={`<div></div>`}
+            animateRows={true}
+          />
+        </div>
+        <FullButton
+          tableStateHandler={tableStateHandler}
+          columnDefsHandler={columnDefsHandler}
+          tableState={tableState}
         />
       </div>
-      <FullButton
-        tableStateHandler={tableStateHandler}
-        columnDefsHandler={columnDefsHandler}
-        tableState={tableState}
-      />
-    </div>
+    </Provider>
   );
 };
 

@@ -3,55 +3,21 @@ import { BiSolidDownArrow } from "react-icons/bi";
 import { useState } from "react";
 import { dateFormatter } from "../../utils/utils";
 import { optionHelper } from "../../utils/utils";
+import { colSelActions } from "../store/table-slice";
+import { useDispatch } from "react-redux";
 
 const PriceDropDown = (props) => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
+  const dispatch = useDispatch();
   const activeHandler = () => {
     setActive(!active);
   };
 
-  // const optionHelper = (name) => {
-  //   switch (name) {
-  //     case "Ask Price":
-  //       return "askPrice";
-  //       break;
-
-  //     case "Bid Price":
-  //       return "bidPrice";
-  //       break;
-  //     case "High Price":
-  //       return "highPrice";
-  //       break;
-  //     case "Last Price":
-  //       return "lastPrice";
-  //       break;
-  //     case "Low Price":
-  //       return "lowPrice";
-  //       break;
-  //     case "Open Price":
-  //       return "openPrice";
-  //       break;
-  //     case "Prev Close Price":
-  //       return "prevClosePrice";
-  //       break;
-  //     case "Price Change":
-  //       return "priceChange";
-  //       break;
-  //     case "Weighted Avg Price":
-  //       return "weightedAbgPrice";
-  //       break;
-  //     case "Price Change Percent":
-  //       return "priceChangePercent";
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
   const optionHandler = (e) => {
     const name = String(e.target.innerText);
-    console.log(name);
     const optionName = optionHelper(name);
     console.log(optionName);
+    dispatch(colSelActions.changeColumn(optionName));
 
     props.seterHandler([
       { field: "symbol" },
