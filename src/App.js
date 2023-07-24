@@ -18,27 +18,7 @@ const App = () => {
   const [rowData, setRowData] = useState();
   const [tableState, setTableState] = useState(FullTable);
 
-  const [columnDefs, setColumnDefs] = useState([
-    { field: "symbol" },
-    { field: "firstId" },
-    {
-      field: "volume",
-      valueFormatter: (params) => Number(params.data.volume).toFixed(2),
-    },
-    { field: "count", sortable: "true", unSortIcon: "true" },
-    {
-      field: "askPrice",
-      valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
-    },
-    {
-      field: "askQty",
-      valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
-    },
-    {
-      field: "openTime",
-      valueFormatter: (params) => dateFormatter(params),
-    },
-  ]);
+  const [columnDefs, setColumnDefs] = useState(InitialTable);
 
   useEffect(() => {
     axios
@@ -55,20 +35,21 @@ const App = () => {
     setTableState(str);
   };
   const columnDefsHandler = (arr) => {
-    setColumnDefs(arr);
+    console.log(arr);
+    console.log(columnDefs);
+    setColumnDefs((prevState) => arr);
   };
-  console.log(columnDefs);
+  console.log("Refresh");
 
   return (
-    // <AuthContext.Provider
-    //   value={{
-    //     initialTable: InitialTable,
-    //   }}
-    // >
     <div className="table-container">
       <SelectionButton />
       <Preloader loading={loading} />
-      <ColumnButtons tableState={tableState} seterHandler={columnDefsHandler} />
+      <ColumnButtons
+        tableState={tableState}
+        initTable={columnDefs}
+        seterHandler={columnDefsHandler}
+      />
       <div className="ag-theme-alpine-dark" style={{ height: "76vh" }}>
         <AgGridReact
           rowData={rowData}
@@ -85,7 +66,6 @@ const App = () => {
         tableState={tableState}
       />
     </div>
-    // </AuthContext.Provider>
   );
 };
 

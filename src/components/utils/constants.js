@@ -6,23 +6,19 @@ export const InitialTable = [
   { field: "symbol" },
   { field: "firstId" },
   {
-    id: "volume",
     field: "volume",
     valueFormatter: (params) => Number(params.data.volume).toFixed(2),
   },
   { field: "count", sortable: "true", unSortIcon: "true" },
   {
-    id: "price",
     field: "askPrice",
     valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
   },
   {
-    id: "qty",
     field: "askQty",
     valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
   },
   {
-    id: "tyme",
     field: "openTime",
     valueFormatter: (params) => dateFormatter(params),
   },
