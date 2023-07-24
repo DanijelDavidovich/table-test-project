@@ -1,14 +1,12 @@
 import "./dropDown.css";
 import { BiSolidDownArrow } from "react-icons/bi";
-import { useState } from "react";
-import { dateFormatter } from "../../utils/utils";
 import { optionHelper } from "../../utils/utils";
-import { colSelActions } from "../store/table-slice";
-import { useDispatch } from "react-redux";
+import { dateFormatter } from "../../utils/utils";
+import { useState } from "react";
 
 const PriceDropDown = (props) => {
   const [active, setActive] = useState();
-  const dispatch = useDispatch();
+
   const activeHandler = () => {
     setActive(!active);
   };
@@ -16,33 +14,7 @@ const PriceDropDown = (props) => {
   const optionHandler = (e) => {
     const name = String(e.target.innerText);
     const optionName = optionHelper(name);
-    console.log(optionName);
-    dispatch(colSelActions.changeColumn(optionName));
-
-    props.seterHandler([
-      { field: "symbol" },
-      { field: "firstId" },
-      {
-        field: "volume",
-        valueFormatter: (params) => Number(params.data.volume).toFixed(2),
-      },
-      { field: "count" },
-      {
-        field: `${optionName}`,
-        // field: "askPrice",
-        valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
-      },
-      {
-        field: "askQty",
-        valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
-      },
-      {
-        field: "openTime",
-        valueFormatter: (params) => {
-          dateFormatter(params);
-        },
-      },
-    ]);
+    props.seterHandler(optionName);
     setActive(false);
   };
   return (
