@@ -1,8 +1,8 @@
 import { BiSolidRightArrow } from "react-icons/bi";
 import "./fullButton.css";
 import { FullTable } from "../utils/constants";
-import { dateFormatter } from "../utils/utils";
 import { TableFull } from "../utils/constants";
+import { InitialTable } from "../utils/constants";
 
 const FullButton = (props) => {
   const fullButton = () => {
@@ -11,27 +11,7 @@ const FullButton = (props) => {
       props.columnDefsHandler(TableFull);
     } else {
       props.tableStateHandler(FullTable);
-      props.columnDefsHandler([
-        { field: "symbol" },
-        { field: "firstId" },
-        {
-          field: "volume",
-          valueFormatter: (params) => Number(params.data.volume).toFixed(2),
-        },
-        { field: "count", sortable: "true", unSortIcon: "true" },
-        {
-          field: "askPrice",
-          valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
-        },
-        {
-          field: "askQty",
-          valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
-        },
-        {
-          field: "openTime",
-          valueFormatter: (params) => dateFormatter(params),
-        },
-      ]);
+      props.columnDefsHandler(InitialTable);
     }
   };
 

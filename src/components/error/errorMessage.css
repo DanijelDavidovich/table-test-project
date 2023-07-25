@@ -1,0 +1,29 @@
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -1rem;
+  right: 50%;
+  transform: translateX(52%);
+}
+
+.error-message {
+  color: #c92a2a;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-right: 3px;
+  margin-top: 0;
+}
+
+.error-icon {
+  color: #c92a2a;
+}
+
+.error-text {
+  color: #c92a2a;
+  font-size: 11px;
+  margin-top: -8px;
+}

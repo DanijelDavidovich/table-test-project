@@ -1,10 +1,9 @@
 import { dateFormatter } from "./utils";
 
 export const FullTable = "Full Table";
-export const HiddenTableButtons = "hidden";
 export const InitialTable = [
   { field: "symbol" },
-  { field: "firstId" },
+  { headerName: "First ID", field: "firstId" },
   {
     field: "volume",
     valueFormatter: (params) => Number(params.data.volume).toFixed(2),
@@ -15,6 +14,7 @@ export const InitialTable = [
     valueFormatter: (params) => Number(params.data.askPrice).toFixed(2),
   },
   {
+    headerName: "Ask Quantity",
     field: "askQty",
     valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
   },
@@ -25,8 +25,8 @@ export const InitialTable = [
 ];
 export const TableFull = [
   { field: "symbol" },
-  { field: "firstId" },
-  { field: "lastId" },
+  { headerName: "First ID", field: "firstId" },
+  { headerName: "Last ID", field: "lastId" },
   {
     field: "quoteVolume",
     valueFormatter: (params) => Number(params.data.quoteVolume).toFixed(2),
@@ -69,6 +69,7 @@ export const TableFull = [
     valueFormatter: (params) => Number(params.data.priceChange).toFixed(2),
   },
   {
+    headerName: "Weighted Average Price",
     field: "weightedAvgPrice",
     valueFormatter: (params) => Number(params.data.weightedAvgPrice).toFixed(2),
   },
@@ -78,14 +79,17 @@ export const TableFull = [
       Number(params.data.priceChangePercent).toFixed(2),
   },
   {
+    headerName: "Ask Quantity",
     field: "askQty",
     valueFormatter: (params) => Number(params.data.askQty).toFixed(2),
   },
   {
+    headerName: "Bid Quantity",
     field: "bidQty",
     valueFormatter: (params) => Number(params.data.bidQty).toFixed(2),
   },
   {
+    headerName: "Last Quantity",
     field: "lastQty",
     valueFormatter: (params) => Number(params.data.lastQty).toFixed(2),
   },

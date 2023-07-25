@@ -7,8 +7,10 @@
   position: relative;
 }
 
-.column-buttons-state {
-  display: none;
+.above-table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 ::-webkit-scrollbar {
