@@ -18,6 +18,7 @@ const FullButton = (props) => {
   return (
     <button className="table-state" onClick={fullButton}>
       {props.tableState}
+
       <BiSolidRightArrow
         className={
           props.tableState === FullTable ? "button-arrow" : "op-button-arrow"

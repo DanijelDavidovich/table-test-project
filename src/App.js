@@ -30,9 +30,11 @@ const App = () => {
         setError(true);
       });
   }, []);
+
   const tableStateHandler = (str) => {
     setTableState(str);
   };
+
   const columnDefsHandler = (arr) => {
     setColumnDefs(arr);
   };
@@ -47,7 +49,9 @@ const App = () => {
         />
         <ErrorMessage errorState={error} />
       </div>
+
       <Preloader loading={loading} />
+
       <div className="ag-theme-alpine-dark" style={{ height: "81.5vh" }}>
         <AgGridReact
           rowData={rowData}
