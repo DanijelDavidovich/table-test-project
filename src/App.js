@@ -19,7 +19,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("https://data.binance.com/api/v3/ticker/24hr")
+      .get(process.env.REACT_APP_API_URL)
       .then((rowData) => {
         setRowData(rowData.data);
         setLoading(false);
